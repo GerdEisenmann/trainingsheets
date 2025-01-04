@@ -1,0 +1,13 @@
+<form #actorForm="ngForm">
+    <label for="note">My Notes:</label>
+    <br/>
+    <textarea
+        type="text"
+        id="note"
+        placeholder="put your personal notes here"
+        accesskey="n"
+        [(ngModel)]="note"
+        name="note"
+        #name="ngModel"
+    ></textarea>
+</form>
