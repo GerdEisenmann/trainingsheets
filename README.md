@@ -47,7 +47,8 @@ npm run ng build -- --output-path docs --base-href /trainingsheets/browser/
 ```
 push this into branch gh-pges and commit to github.
 Wait a while. Then open
-https://GerdEisenmann.github.io/trainingsheets
+https://GerdEisenmann.github.io/trainingsheets/browser
+
 
 
 

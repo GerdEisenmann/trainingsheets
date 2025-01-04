@@ -1,10 +1,11 @@
 import { Component, Input, OnInit, Type } from '@angular/core';
 import { routes } from '../app.routes';
-import { Resolve, ResolveFn, Route } from '@angular/router';
+import { Resolve, ResolveFn, Route, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sheet-navigation',
-  imports: [],
+  imports: [ CommonModule, RouterModule ],
   templateUrl: './sheet-navigation.component.html',
   styleUrl: './sheet-navigation.component.css'
 })
