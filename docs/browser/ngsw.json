@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1736005907995,
+  "timestamp": 1736007867478,
   "index": "/trainingsheets/browser/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/trainingsheets/browser/favicon.ico",
         "/trainingsheets/browser/index.html",
-        "/trainingsheets/browser/main-ROVEJAJW.js",
+        "/trainingsheets/browser/main-WMMDF5WA.js",
         "/trainingsheets/browser/manifest.webmanifest",
         "/trainingsheets/browser/polyfills-FFHMD2TL.js",
         "/trainingsheets/browser/styles-CFLP3MCZ.css"
@@ -51,8 +51,8 @@
     "/trainingsheets/browser/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/trainingsheets/browser/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/trainingsheets/browser/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/trainingsheets/browser/index.html": "c36c3d0025dc7ca93c7c1dfcad58bc07b4b98dd4",
-    "/trainingsheets/browser/main-ROVEJAJW.js": "68e4a56ba4553555a0b34c4140b3ff9878fd2e94",
+    "/trainingsheets/browser/index.html": "92fd8f08987827382a562a4d7b0d6458e9c537ee",
+    "/trainingsheets/browser/main-WMMDF5WA.js": "4048f2c52970835d4875db1991158a0a919897de",
     "/trainingsheets/browser/manifest.webmanifest": "f554be9c1e3cfe41cc7b0a0335cdca1d5b687193",
     "/trainingsheets/browser/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
     "/trainingsheets/browser/styles-CFLP3MCZ.css": "bb1952920566660d70c7d0cbdc2ae4ddcfb207d4"
