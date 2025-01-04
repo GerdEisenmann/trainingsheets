@@ -1,7 +1,7 @@
 {
   "configVersion": 1,
-  "timestamp": 1736004484420,
-  "index": "/trainingsheets/index.html",
+  "timestamp": 1736005907995,
+  "index": "/trainingsheets/browser/index.html",
   "assetGroups": [
     {
       "name": "app",
@@ -11,12 +11,12 @@
         "ignoreVary": true
       },
       "urls": [
-        "/trainingsheets/favicon.ico",
-        "/trainingsheets/index.html",
-        "/trainingsheets/main-ROVEJAJW.js",
-        "/trainingsheets/manifest.webmanifest",
-        "/trainingsheets/polyfills-FFHMD2TL.js",
-        "/trainingsheets/styles-CFLP3MCZ.css"
+        "/trainingsheets/browser/favicon.ico",
+        "/trainingsheets/browser/index.html",
+        "/trainingsheets/browser/main-ROVEJAJW.js",
+        "/trainingsheets/browser/manifest.webmanifest",
+        "/trainingsheets/browser/polyfills-FFHMD2TL.js",
+        "/trainingsheets/browser/styles-CFLP3MCZ.css"
       ],
       "patterns": []
     },
@@ -28,34 +28,34 @@
         "ignoreVary": true
       },
       "urls": [
-        "/trainingsheets/icons/icon-128x128.png",
-        "/trainingsheets/icons/icon-144x144.png",
-        "/trainingsheets/icons/icon-152x152.png",
-        "/trainingsheets/icons/icon-192x192.png",
-        "/trainingsheets/icons/icon-384x384.png",
-        "/trainingsheets/icons/icon-512x512.png",
-        "/trainingsheets/icons/icon-72x72.png",
-        "/trainingsheets/icons/icon-96x96.png"
+        "/trainingsheets/browser/icons/icon-128x128.png",
+        "/trainingsheets/browser/icons/icon-144x144.png",
+        "/trainingsheets/browser/icons/icon-152x152.png",
+        "/trainingsheets/browser/icons/icon-192x192.png",
+        "/trainingsheets/browser/icons/icon-384x384.png",
+        "/trainingsheets/browser/icons/icon-512x512.png",
+        "/trainingsheets/browser/icons/icon-72x72.png",
+        "/trainingsheets/browser/icons/icon-96x96.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/trainingsheets/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
-    "/trainingsheets/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
-    "/trainingsheets/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
-    "/trainingsheets/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
-    "/trainingsheets/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
-    "/trainingsheets/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
-    "/trainingsheets/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
-    "/trainingsheets/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
-    "/trainingsheets/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/trainingsheets/index.html": "a237026568c4705d5a0c0b6ccd3e3472443c5721",
-    "/trainingsheets/main-ROVEJAJW.js": "68e4a56ba4553555a0b34c4140b3ff9878fd2e94",
-    "/trainingsheets/manifest.webmanifest": "f554be9c1e3cfe41cc7b0a0335cdca1d5b687193",
-    "/trainingsheets/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
-    "/trainingsheets/styles-CFLP3MCZ.css": "bb1952920566660d70c7d0cbdc2ae4ddcfb207d4"
+    "/trainingsheets/browser/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/trainingsheets/browser/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
+    "/trainingsheets/browser/icons/icon-144x144.png": "b155fd5f2fd5d2ea7760721063003c4cd95fd783",
+    "/trainingsheets/browser/icons/icon-152x152.png": "eae6e0f0c8afb8aaae339e2a569b43e9238e5e6c",
+    "/trainingsheets/browser/icons/icon-192x192.png": "15c4180454633880d98674aa7394656196c91584",
+    "/trainingsheets/browser/icons/icon-384x384.png": "94a915751ef6c9282df9aea405ad679230631814",
+    "/trainingsheets/browser/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
+    "/trainingsheets/browser/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
+    "/trainingsheets/browser/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
+    "/trainingsheets/browser/index.html": "c36c3d0025dc7ca93c7c1dfcad58bc07b4b98dd4",
+    "/trainingsheets/browser/main-ROVEJAJW.js": "68e4a56ba4553555a0b34c4140b3ff9878fd2e94",
+    "/trainingsheets/browser/manifest.webmanifest": "f554be9c1e3cfe41cc7b0a0335cdca1d5b687193",
+    "/trainingsheets/browser/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/trainingsheets/browser/styles-CFLP3MCZ.css": "bb1952920566660d70c7d0cbdc2ae4ddcfb207d4"
   },
   "navigationUrls": [
     {
