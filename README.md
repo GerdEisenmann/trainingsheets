@@ -39,8 +39,18 @@ To build the project run:
 ```bash
 ng build
 ```
-
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## For Github pages:
+```bash
+npm run ng build -- --output-path docs --base-href /trainingsheets/browser/
+```
+push this into branch gh-pges and commit to github.
+Wait a while. Then open
+https://GerdEisenmann.github.io/trainingsheets/browser
+
+
+
 
 ## Running unit tests
 
