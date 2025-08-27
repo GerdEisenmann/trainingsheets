@@ -1,3 +1,6 @@
+/**
+ * defines the structure of a content training sheet
+ */
 export interface Content {
     uid: string,
     urlOrPath: string,
