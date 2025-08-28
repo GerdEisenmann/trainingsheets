@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1756390661796,
+  "timestamp": 1756391136509,
   "index": "/trainingsheets/browser/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/trainingsheets/browser/favicon.ico",
         "/trainingsheets/browser/index.html",
-        "/trainingsheets/browser/main-45YRHSKX.js",
+        "/trainingsheets/browser/main-Y4WYPBA4.js",
         "/trainingsheets/browser/manifest.webmanifest",
         "/trainingsheets/browser/polyfills-FFHMD2TL.js",
         "/trainingsheets/browser/styles-CFLP3MCZ.css"
@@ -51,8 +51,8 @@
     "/trainingsheets/browser/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/trainingsheets/browser/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/trainingsheets/browser/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/trainingsheets/browser/index.html": "af7d8ba200e135118e92ad2e71c6df90ab9ee93b",
-    "/trainingsheets/browser/main-45YRHSKX.js": "69d42a10f1e6fd791ae67b3de2b1bcfa906f5dde",
+    "/trainingsheets/browser/index.html": "4543800b1f072ddc8fdcb7e04537a36f2a9bcd05",
+    "/trainingsheets/browser/main-Y4WYPBA4.js": "1892d55bac6716c18fc028793c838e1cc1e3c0c6",
     "/trainingsheets/browser/manifest.webmanifest": "f554be9c1e3cfe41cc7b0a0335cdca1d5b687193",
     "/trainingsheets/browser/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
     "/trainingsheets/browser/styles-CFLP3MCZ.css": "bb1952920566660d70c7d0cbdc2ae4ddcfb207d4"

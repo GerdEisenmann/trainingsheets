@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Content } from "./model/content";
-import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { lastValueFrom } from "rxjs";
 import { ToC } from "./model/toc";
 
@@ -19,7 +19,7 @@ export class ToCService {
  * @returns Promise<ToC>
  */
     public async loadToC(): Promise<ToC> {
-        let toc = await lastValueFrom(this.http.get(`${this.basePath()}toc_1.json`));
+        let toc = await lastValueFrom(this.http.get(`${this.baseContentsPath()}toc_1.json`));
         console.log("json", toc);
         this.toc = toc as ToC;
         return this.toc;
@@ -38,7 +38,7 @@ export class ToCService {
     
     public async loadContent(id: string|null): Promise<string> {
         const content = await this.getContent(id);
-        let html = await lastValueFrom(this.http.get(`${this.basePath()}${content?.urlOrPath}`, {responseType: 'text'}));
+        let html = await lastValueFrom(this.http.get(`${this.baseContentsPath()}${content?.urlOrPath}`, {responseType: 'text'}));
         console.log("content", html);
         return html;
     }
@@ -76,12 +76,12 @@ export class ToCService {
     }   
 
 
-    basePath(): string {
+    baseContentsPath(): string {
         const origin = window.location.origin + window.location.pathname;
         if(origin.startsWith('http://localhost')) {
             return 'http://localhost:4200/contents/';
         }
-        return origin;
+        return origin + 'contents/';
     }
 
 
