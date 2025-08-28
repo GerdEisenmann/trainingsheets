@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "release": "shx cp -r dist/notes/browser/* docs/browser"
+    "release": "ng build --output-path docs --base-href /trainingsheets/browser/"
   },
   "private": true,
   "dependencies": {

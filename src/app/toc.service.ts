@@ -81,6 +81,9 @@ export class ToCService {
         if(origin.startsWith('http://localhost')) {
             return 'http://localhost:4200/contents/';
         }
+        if(origin.startsWith('https://gerdeisenmann.github.io')) {
+            return 'https://gerdeisenmann.github.io/trainingsheets/browser/contents/';
+        }
         return origin + 'contents/';
     }
 
