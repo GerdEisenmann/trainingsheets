@@ -86,7 +86,4 @@ export class ToCService {
         }
         return origin + 'contents/';
     }
-
-
-
 }
