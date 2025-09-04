@@ -1,9 +1,5 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-/**
- * Service to save and load notes of a component (training sheet) from local storage.
- */
 @Injectable({
   providedIn: 'root'
 })

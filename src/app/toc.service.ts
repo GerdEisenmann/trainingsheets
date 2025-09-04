@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
+import { contentChild, Injectable } from "@angular/core";
 import { Content } from "./model/content";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { lastValueFrom } from "rxjs";
 import { ToC } from "./model/toc";
+import { Sheet } from "./model/Sheet";
 
 @Injectable({       
   providedIn: 'root',
@@ -25,6 +26,19 @@ export class ToCService {
         return this.toc;
     }
 
+    public loadTocAsSheets(): Sheet[] {
+        var importedSheets: Sheet[] = [];
+        let tocPromise = this.loadToC();
+        tocPromise.then(response => {
+            for(var content of response.contents) {
+                this.loadContentAsSheet(content).then(response => {
+                    importedSheets.push(response);
+                });;
+            }
+        })
+        return importedSheets;
+    }
+
     public async getContent(id: string|null): Promise<Content|null> {
         if(this.toc === null) {
             await this.loadToC();
@@ -41,6 +55,11 @@ export class ToCService {
         let html = await lastValueFrom(this.http.get(`${this.basePath()}${content?.urlOrPath}`, {responseType: 'text'}));
         console.log("content", html);
         return html;
+    }
+
+    public async loadContentAsSheet(content: Content): Promise<Sheet> {
+        let html = await lastValueFrom(this.http.get(`${this.basePath()}${content?.urlOrPath}`, {responseType: 'text'}));
+        return new Sheet (Number(content.uid), content.title, "", html);;
     }
 
     public async getPreviousContent(id: string|null): Promise<Content|null> {

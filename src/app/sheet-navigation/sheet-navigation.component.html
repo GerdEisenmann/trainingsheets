@@ -1,14 +1,7 @@
 <table width="100%">
     <tr width="100%">
-        <td width="33%" class="left">
-            <a [routerLink]="['/content', previousContent?.uid]" routerLinkActive="active" ariaCurrentWhenActive="page">{{previousContent?.title}}</a>
-        </td>
-        
+        <td width="33%" class="left"><a routerLink="../{{previous}}" aria-disabled="true">{{previousTitle}}</a></td>
         <td width="34%" class="middle"><a routerLink='../'>Table of contents</a></td>
-
-
-        <td width="33%" class="right">
-            <a [routerLink]="['/content', nextContent?.uid]" routerLinkActive="active" ariaCurrentWhenActive="page">{{nextContent?.title}}</a>
-        </td>
-        </tr>
+        <td width="33%" class="right"><a routerLink="../{{next}}">{{nextTitle}}</a></td>
+    </tr>
 </table>

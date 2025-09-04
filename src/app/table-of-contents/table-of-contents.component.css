@@ -1,0 +1,198 @@
+.grid-container {
+  gap: 1px;
+  background-color: dodgerblue;
+  padding: 4px;
+}
+
+.admin { grid-area: admin; }
+.header { grid-area: header; }
+.exerciseDays { grid-area: exerciseDays; }
+.sheetListButtons { grid-area: sheetListButtons; }
+.sheetList { grid-area: sheetList; }
+.sheetDetailCompo { grid-area: sheetDetailCompo; }
+
+.appTitle {
+  font-weight: bold;
+}
+
+.tabGroup {
+  flex-direction: column;
+  font-weight: 500;
+  font-size: smaller;
+}
+.tabGroup .mat-tab-labels {
+  flex-direction: row;
+}
+
+
+.cardTop {
+  background-color: rgb(138, 157, 180);
+  margin: 0.1cm;
+  padding: 1em 1em;
+  align-self: center;
+}
+
+.cardsDaysSheetsDetail {
+  display: flex;
+  flex-direction: row;
+  margin: 0.1cm;
+}
+
+.cardLeft {
+  background-color: rgb(138, 157, 180);
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0.1cm;
+}
+
+.cardsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 1em; /* Optional: space between cards */
+}
+
+.cardSheetListOfTOC,
+.cardSheetListOfDays,
+.cardExerciseDays {
+  background-color: rgb(182, 182, 182);
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0.1cm;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.cardSheetList .appButtons {
+  margin-bottom: auto;
+}
+.cardContentSheetList .appButtons {
+  margin-bottom: auto;
+}
+.cardSheetDetails {
+  background-color: rgb(182, 182, 182);
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0.1cm;
+}
+
+.card-data {
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+  }
+
+/* exerciseDays */
+
+.fullFeature {
+  color: #040404;
+}
+.noFeature {
+  color: #aeadad;
+}
+
+.exerciseDays {
+  list-style-type: none;
+  padding: 0;
+}
+
+.exerciseDays li {
+  display: flex;
+}
+
+.exerciseDays button {
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .3em;
+  padding: 0.2em 0.2em;
+  border-radius: 4px;
+  display: flex;
+  align-items: stretch;
+  height: 1.8em;
+}
+
+.exerciseDays button:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+  left: .1em;
+}
+
+.exerciseDays button:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.exerciseDays button.selected {
+  background-color: black;
+  color: white;
+}
+
+.exerciseDays button.selected:hover {
+  background-color: #505050;
+  color: white;
+}
+
+.exerciseDays button.selected:active {
+  background-color: black;
+  color: white;
+}
+
+.exerciseDays .date {
+  align-self: center;
+}
+
+/*   Sheet List Buttons   */
+
+.sheetListButtons {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sheetListButtons button {
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .3em;
+  padding: 0.2em 0.2em;
+  height: 1.8em;
+  border-radius: 10px;
+}
+
+.sheetListButtons button:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+  left: .1em;
+  border-radius: 10px;
+}
+
+.sheetListButtons button:active {
+  background-color: #525252;
+  color: #fafafa;
+  border-radius: 10px;
+}
+
+.sheetListButtons button.selected {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+.sheetListButtons button.selected:hover {
+  background-color: rgb(179, 179, 179);
+  color: white;
+  border-radius: 10px;
+}
+
+.sheetListButtons button.selected:active {
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
