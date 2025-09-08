@@ -5,8 +5,10 @@ import { RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { ExerciseDay } from '../model/ExerciseDay';
 import { Sheet } from '../model/Sheet';
+import { Plan } from '../model/Plan';
 import { SHEETS } from '../model/Mock-Data';
 import { SheetDetailComponent } from '../sheetDetail.component';
+import { PlansComponent } from '../plans.component';
 import { NEVER, Observable } from 'rxjs';
 import { BehaviorSubject } from "rxjs";
 
@@ -30,7 +32,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-table-of-contents',
-  imports: [ CommonModule, RouterModule, FormsModule, NgFor, SheetDetailComponent, MatTabsModule, MatListModule, MatIconModule, MatButtonModule, MatCardModule ],  
+  imports: [ CommonModule, RouterModule, FormsModule, NgFor, PlansComponent, SheetDetailComponent, MatTabsModule, MatListModule, MatIconModule, MatButtonModule, MatCardModule, PlansComponent ],  
   templateUrl: './table-of-contents.component.html',
   styleUrl: './table-of-contents.component.css',
   providers: [ { provide: MatDialogRef,useValue: {} } ]
@@ -38,9 +40,11 @@ import { HttpClient } from '@angular/common/http';
 
 export class TableOfContentsComponent {
 
+  plans: Plan[] = [];
   exerciseDays: ExerciseDay[] = [];
   sheets: Sheet[] = [];
   readonly dialog = inject(MatDialog);
+  activePlan: Plan = new Plan(0, "", []);
   activeSheet: Sheet = new Sheet();
   activeExerciseDay: ExerciseDay = new ExerciseDay;
   showTOC: boolean = false;
@@ -56,22 +60,31 @@ export class TableOfContentsComponent {
 
   ngOnInit(): void {
     this.dataService.fillDataFromMockData();
+    this.dataService.storeDataToLocalStorage();
     this.getExerciseDays();
     this.getSheets();
     this.activeService.isAdmin=false;
     this.tabSelection = 0;
-    this.showFirstDay();
+    this.selectFirstDay();
   }
 
-  showFirstDay() {
+  selectFirstDay() {
     let firstDay = null;
     if(this.exerciseDays.length > 0) firstDay = this.exerciseDays[0];
     if(firstDay != null) {
-      this.activeService.currentDate.next(firstDay);
+      this.activeService.currentDayInCalendar.next(firstDay);
       this.selectDate(firstDay);
     }
   }
 
+  getPlans(): void {
+    this.dataService.getAllPlans().subscribe(plans => this.plans = plans);
+    this.sortPlans();
+  }
+
+  sortPlans(): void {
+    this.plans = this.plans.sort(function(a, b) { return a.shortName.localeCompare(b.shortName)});
+  }
   getExerciseDays(): void {
     this.dataService.getAllExerciseDays().subscribe(exerciseDays => this.exerciseDays = exerciseDays);
     this.sortExerciseDays();
@@ -92,7 +105,7 @@ export class TableOfContentsComponent {
   }
   
   selectDate(arg: ExerciseDay): void {
-    this.activeService.currentDate.next(arg);
+    this.activeService.currentDayInCalendar.next(arg);
     this.activeExerciseDay = arg;
     this.activeSheet = new Sheet();
     this.showTOC = false;
@@ -100,6 +113,10 @@ export class TableOfContentsComponent {
   }
   selectSheet(arg: Sheet): void {
     this.activeSheet = arg;
+  }
+
+  showDayListInPlanTab(plan: Plan) {
+    //(plan.exerciseDays as ExerciseDay[]).sort(function(a, b) { return a.sort(b)});
   }
 
   showSheets(exDay: ExerciseDay) {
@@ -142,7 +159,7 @@ export class TableOfContentsComponent {
       this.sheets?.splice(sheetIndex, 1);
     } else {
       // Remove from ExerciseDay
-      let selExDay: ExerciseDay = this.activeService.currentDate.value as ExerciseDay;
+      let selExDay: ExerciseDay = this.activeService.currentDayInCalendar.value as ExerciseDay;
       let list = selExDay.sheets as Sheet[];
       const index = list.findIndex(x => x.id === this.activeSheet.id);
       selExDay.sheets?.splice(index, 1);
@@ -151,10 +168,10 @@ export class TableOfContentsComponent {
   }
 
   clickedNewExerciseButton() {
-    console.log("clicked new day", this.activeService.currentDate);
+    console.log("clicked new day", this.activeService.currentDayInCalendar);
     const newDay: ExerciseDay = new ExerciseDay(this.dataService.getNextExerciseDayId(), new Date, []);
     this.exerciseDays.push(newDay);
-    this.activeService.currentDate.next(newDay);
+    this.activeService.currentDayInCalendar.next(newDay);
     this.openDayQueryModal();
     this.selectDate(newDay);
   }
@@ -174,8 +191,8 @@ export class TableOfContentsComponent {
   }
 
   async openDayQueryModal(): Promise<Date | undefined> {
-    if(this.activeService.currentDate.value != null) {
-      var selExDayId = (this.activeService.currentDate.value as ExerciseDay).id as number;
+    if(this.activeService.currentDayInCalendar.value != null) {
+      var selExDayId = (this.activeService.currentDayInCalendar.value as ExerciseDay).id as number;
     } else {
       return undefined;
     }
@@ -193,7 +210,7 @@ export class TableOfContentsComponent {
     if(resultDate === undefined) {
       return undefined
     } else {
-      this.activeService.currentDate.value.date = resultDate;
+      this.activeService.currentDayInCalendar.value.date = resultDate;
       this.sortExerciseDays();
       this.dataService.editExperciseDay(selExDayId);
       return resultDate;
@@ -201,8 +218,8 @@ export class TableOfContentsComponent {
   }
 
   async openSheetQueryModal() {
-    if(this.activeService.currentDate.value != null) {
-      var selExDay: ExerciseDay = this.activeService.currentDate.value as ExerciseDay;
+    if(this.activeService.currentDayInCalendar.value != null) {
+      var selExDay: ExerciseDay = this.activeService.currentDayInCalendar.value as ExerciseDay;
     } else {
       return
     }
@@ -228,13 +245,18 @@ export class TableOfContentsComponent {
     return new Date(Date.UTC(temp[2], temp[1] - 1, temp[0]));
   }
 
-  openSheetListOneDay() {
-    console.log("Pressed One Day", this.activeExerciseDay)
+  openTabPlan() {
+    console.log("Pressed Plan")
+    this.showDayListInPlanTab(this.activePlan);
+  }
+
+  openTabCalender() {
+    console.log("Pressed Calender", this.activeExerciseDay)
     if(this.showTOC) this.showTOC = false;
     this.showSheets(this.activeExerciseDay);
   }
 
-  openSheetListTOC() {
+  openTabCatalog() {
     this.activeExerciseDay == null;
     console.log("Pressed TOC");
     if(!this.showTOC) this.showTOC = true;
@@ -243,8 +265,9 @@ export class TableOfContentsComponent {
 
   changeTab(event: MatTabChangeEvent) {
     console.log(event.tab);
-    if(event.index == 0) this.openSheetListOneDay();
-    if(event.index == 1) this.openSheetListTOC();
+    if(event.index == 0) this.openTabPlan();
+    if(event.index == 1) this.openTabCalender();
+    if(event.index == 2) this.openTabCatalog();
   }
 
   clickedAdminButton() {
@@ -265,11 +288,12 @@ export class TableOfContentsComponent {
       try {
         const data = JSON.parse(reader.result as string);
         console.log('Imported data:', data);
-        // Do something with the data
-        this.dataService.putAllExerciseDays(data[0]);
-        this.exerciseDays = data[0];
-        this.dataService.putAllSheets(data[1]);
-        this.sheets = data[1];
+        this.dataService.putAllPlans(data[0]);
+        this.plans = data[0];
+        this.dataService.putAllExerciseDays(data[1]);
+        this.exerciseDays = data[1];
+        this.dataService.putAllSheets(data[2]);
+        this.sheets = data[2];
       } catch (e) {
         console.error('Invalid JSON file', e);
       }
@@ -278,7 +302,7 @@ export class TableOfContentsComponent {
   }
    
   clickedExportJsonButton() {
-    const daysAndSheets: [ Array<ExerciseDay>, Array<Sheet> ] = [ this.exerciseDays, this.dataService.getAllSheetsNotObserved() ];
+    const daysAndSheets: [ Array<Plan>, Array<ExerciseDay>, Array<Sheet> ] = [ this.dataService.getAllPlansNotObserved(), this.exerciseDays, this.dataService.getAllSheetsNotObserved() ];
     console.log("export");
     const jsonString = JSON.stringify(daysAndSheets);
     const blob = new Blob([jsonString], { type: 'application/json' });

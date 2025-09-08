@@ -2,12 +2,19 @@
   <mat-card class="cardTop">
     <mat-card-title class="appTitle">Training Planner</mat-card-title>
     <mat-tab-group class="tabGroup" mat-align-tab="start" (selectedTabChange)="changeTab($event)" [(selectedIndex)]="tabSelection">
+      <mat-tab class="tabPlans">
+        <ng-template mat-tab-label>Plan</ng-template>
+        <div class="cardsRow">
+          <plans></plans>
+        </div>
+      </mat-tab>
       <mat-tab class="tabCalendar">
         <ng-template mat-tab-label>Calendar</ng-template>
         <div class="cardsRow">
           <mat-card class="cardExerciseDays">
             <mat-card-content>
               <div class="exerciseDays">
+                <mat-card-title>Days</mat-card-title>
                 <li *ngFor="let exerciseDay of exerciseDays"routerLink="/{{exerciseDay.date | date:'dd.MM.yyyy'}}">
                   <button [class.selected]="exerciseDay === activeExerciseDay" type="button" (click)="selectDate(exerciseDay)">
                     <span class="date">{{exerciseDay.date | date:'dd.MM.yyyy' }}</span>
@@ -33,7 +40,7 @@
                 </div>
               </div>
               -->
-              <div class="sheetList">
+              <div class="listInCard">
                 <mat-card-title>Exercises</mat-card-title>
                 <div *ngIf="showSheetList">
                   <li *ngFor="let sheet of sheets" routerLink="/{{sheet.shortName}}" >
@@ -45,7 +52,7 @@
               </div>
               <div class="appButtons">
                 <button type="addSheetButton" (click)="clickedAddSheetButton()" clickable>Add</button>
-                <button type="newSheetButton" [disabled]="isDaySelected()" (click)="clickedNewSheetButton()" clickable>New</button>
+                <button type="newSheetButton" *ngIf="showTOC" [disabled]="isDaySelected()" (click)="clickedNewSheetButton()" clickable>New</button>
                 <button type="deleteSheetButton" (click)="clickedDeleteSheetButton()" clickable>Delete</button>
               </div>
             </mat-card-content>
@@ -68,7 +75,7 @@
                 </div>
               </div>
               -->
-              <div class="sheetList">
+              <div class="listInCard">
                 <mat-card-title>Exercises</mat-card-title>
                 <div *ngIf="showSheetList">
                   <li *ngFor="let sheet of sheets" routerLink="/{{sheet.shortName}}" >
@@ -79,9 +86,8 @@
                 </div>
               </div>
               <div class="appButtons">
-                <button type="addSheetButton" (click)="clickedAddSheetButton()" clickable>Add</button>
-                <button type="newSheetButton" [disabled]="activeExerciseDay === null" (click)="clickedNewSheetButton()" clickable>New</button>
-                <button type="deleteSheetButton" (click)="clickedDeleteSheetButton()" clickable>Delete</button>
+                <button type="newSheetButton" *ngIf="isAdmin" [disabled]="activeExerciseDay === null" (click)="clickedNewSheetButton()" clickable>New</button>
+                <button type="deleteSheetButton" *ngIf="isAdmin" (click)="clickedDeleteSheetButton()" clickable>Delete</button>
               </div>
             </mat-card-content>
           </mat-card>

@@ -1,16 +1,3 @@
-.grid-container {
-  gap: 1px;
-  background-color: dodgerblue;
-  padding: 4px;
-}
-
-.admin { grid-area: admin; }
-.header { grid-area: header; }
-.exerciseDays { grid-area: exerciseDays; }
-.sheetListButtons { grid-area: sheetListButtons; }
-.sheetList { grid-area: sheetList; }
-.sheetDetailCompo { grid-area: sheetDetailCompo; }
-
 .appTitle {
   font-weight: bold;
 }
@@ -38,19 +25,6 @@
   margin: 0.1cm;
 }
 
-.cardLeft {
-  background-color: rgb(138, 157, 180);
-  flex: 1 1 0;
-  min-width: 0;
-  margin: 0.1cm;
-}
-
-.cardsRow {
-  display: flex;
-  flex-direction: row;
-  gap: 1em; /* Optional: space between cards */
-}
-
 .cardSheetListOfTOC,
 .cardSheetListOfDays,
 .cardExerciseDays {
@@ -75,21 +49,14 @@
   margin: 0.1cm;
 }
 
-.card-data {
-        width: 30%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-  }
-
-/* exerciseDays */
-
 .fullFeature {
   color: #040404;
 }
 .noFeature {
   color: #aeadad;
 }
+
+/* exerciseDays */
 
 .exerciseDays {
   list-style-type: none;

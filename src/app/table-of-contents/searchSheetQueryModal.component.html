@@ -5,12 +5,12 @@
         <input matInput #queryNameInput>
         <button mat-button color="primary" (click)="search(queryNameInput.value)">Search</button>
         </mat-form-field>
-        <div class="sheetList">
-        <li mat-list #matList *ngFor="let sheet of sheetList" class="col-1-4">
-            <button mat-button [class.selected]="sheet === selectedSheet" (click)="selectSheet(sheet)" clickable>
-            <span>{{sheet.shortName}}</span>
-            </button>
-        </li>
+        <div class="listInCard">
+            <li mat-list #matList *ngFor="let sheet of sheetList" class="col-1-4">
+                <button mat-button [class.selected]="sheet === selectedSheet" (click)="selectSheet(sheet)" clickable>
+                    <span>{{sheet.shortName}}</span>
+                </button>
+            </li>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">

@@ -9,6 +9,13 @@
     text-align: right;
   }
 
+.cardsRow {
+  display: flex;
+  flex-direction: row;
+  gap: 1em; /* Optional: space between cards */
+    width: 100%;
+}
+
 .appButtonsVertical {
   display: flex;
   flex-direction: column;
@@ -35,18 +42,18 @@
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-/* sheetList */
+/* listInCard */
 
-.sheetList {
+.listInCard {
   margin: 0 0 0 0;
   list-style-type: none;
 }
 
-.sheetList li {
+.listInCard li {
   display: flex;
 }
 
-.sheetList button {
+.listInCard button {
   flex: 1;
   cursor: pointer;
   position: relative;
@@ -60,32 +67,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 1.8em;
 }
 
-.sheetList button:hover {
+.listInCard button:hover {
   color: #2c3a41;
   background-color: #e6e6e6;
   left: .1em;
 }
 
-.sheetList button:active {
+.listInCard button:active {
   background-color: #525252;
   color: #fafafa;
 }
 
-.sheetList button.selected {
+.listInCard button.selected {
   background-color: black;
   color: white;
 }
 
-.sheetList button.selected:hover {
+.listInCard button.selected:hover {
   background-color: rgb(179, 179, 179);
   color: white;
 }
 
-.sheetList button.selected:active {
+.listInCard button.selected:active {
   background-color: black;
   color: white;
 }
 
-.sheetList .shortName {
+.listInCard .shortName {
   align-self: center;
 }
