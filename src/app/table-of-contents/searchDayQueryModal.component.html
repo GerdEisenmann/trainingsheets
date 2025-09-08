@@ -1,0 +1,19 @@
+<div>
+    <h2 mat-dialog-title>Search for a Exercise Day</h2>
+    <mat-dialog-content>
+        <mat-form-field>
+        <input matInput #queryNameInput>
+        <button mat-button color="primary" (click)="search(queryNameInput.value)">Search</button>
+        </mat-form-field>
+        <div class="listInCard">
+            <li mat-list #matList *ngFor="let exDay of dayList" class="col-1-4">
+                <button mat-button [class.selected]="exDay === selectedDay" (click)="selectDay(exDay)" clickable>
+                    <span>{{ exDay.date | date:'dd.MM.yyyy' }}</span>
+                </button>
+            </li>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button color="primary" (click)="clickedAddDayButton()" clickable>add</button>
+    </mat-dialog-actions>
+</div>

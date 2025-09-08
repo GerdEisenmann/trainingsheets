@@ -1,0 +1,35 @@
+<div class="cardsRow">
+    <mat-card class="cardPlans">
+        <mat-card-content>
+            <div class="listInCard">
+                <mat-card-title>Plans</mat-card-title>
+                <li *ngFor="let plan of plans">
+                    <button [class.selected]="plan === activePlan" type="button" (click)="selectPlan(plan)">
+                        <span>{{plan.shortName}}</span>
+                    </button>
+                </li>
+            </div>
+            <div class="appButtons">
+                <button type="deletePlanButton" (click)="clickedDeletePlanButton()" clickable>Delete</button>
+                <button type="editPlanButton" (click)="clickedEditPlanButton()" clickable>Edit</button>
+                <button type="addPlanButton" (click)="clickedAddPlanButton()" clickable>Add</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="cardExerciseDays">
+        <mat-card-content>
+            <div class="listInCard">
+                <mat-card-title>Days</mat-card-title>
+                <li *ngFor="let exerciseDay of days">
+                    <button [class.selected]="exerciseDay === activeExerciseDay" type="button" (click)="selectDay(exerciseDay)">
+                    <span class="exDate">{{exerciseDay.date | date:'dd.MM.yyyy' }}</span>
+                    </button>
+                </li>
+            </div>
+            <div class="appButtons">
+                <button type="removeExerciseDayButton" (click)="clickedRemoveExerciseDayButton()" clickable>Remove</button>
+                <button type="addExerciseDayButton" (click)="clickedAddExerciseDayButton()" clickable>Add</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
