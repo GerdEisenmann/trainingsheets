@@ -5,10 +5,10 @@ import { RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { ExerciseDay } from '../model/ExerciseDay';
 import { Sheet } from '../model/Sheet';
-import { Plan } from '../model/Plan';
+import { Course } from '../model/Course';
 import { SHEETS } from '../model/Mock-Data';
 import { SheetDetailComponent } from '../sheetDetail.component';
-import { PlansComponent } from '../plans.component';
+import { CourseComponent } from '../courses.component';
 import { NEVER, Observable } from 'rxjs';
 import { BehaviorSubject } from "rxjs";
 
@@ -32,7 +32,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-table-of-contents',
-  imports: [ CommonModule, RouterModule, FormsModule, NgFor, PlansComponent, SheetDetailComponent, MatTabsModule, MatListModule, MatIconModule, MatButtonModule, MatCardModule, PlansComponent ],  
+  imports: [ CommonModule, RouterModule, FormsModule, NgFor, CourseComponent, SheetDetailComponent, MatTabsModule, MatListModule, MatIconModule, MatButtonModule, MatCardModule, CourseComponent ],  
   templateUrl: './table-of-contents.component.html',
   styleUrl: './table-of-contents.component.css',
   providers: [ { provide: MatDialogRef,useValue: {} } ]
@@ -40,11 +40,11 @@ import { HttpClient } from '@angular/common/http';
 
 export class TableOfContentsComponent {
 
-  plans: Plan[] = [];
+  courses: Course[] = [];
   exerciseDays: ExerciseDay[] = [];
   sheets: Sheet[] = [];
   readonly dialog = inject(MatDialog);
-  activePlan: Plan = new Plan(0, "", []);
+  activeCourse: Course = new Course(0, "", []);
   activeSheet: Sheet = new Sheet();
   activeExerciseDay: ExerciseDay = new ExerciseDay;
   showTOC: boolean = false;
@@ -77,19 +77,18 @@ export class TableOfContentsComponent {
     }
   }
 
-  getPlans(): void {
-    this.dataService.getAllPlans().subscribe(plans => this.plans = plans);
-    this.sortPlans();
+  getCourses(): void {
+    this.dataService.getAllCourses().subscribe(courses => this.courses = courses);
+    this.sortCourses();
+  }
+  sortCourses(): void {
+    this.courses = this.courses.sort(function(a, b) { return a.shortName.localeCompare(b.shortName)});
   }
 
-  sortPlans(): void {
-    this.plans = this.plans.sort(function(a, b) { return a.shortName.localeCompare(b.shortName)});
-  }
   getExerciseDays(): void {
     this.dataService.getAllExerciseDays().subscribe(exerciseDays => this.exerciseDays = exerciseDays);
     this.sortExerciseDays();
   }
-
   sortExerciseDays(): void {
     this.exerciseDays = this.exerciseDays.sort((a, b) => (a.sort(b)));
   }
@@ -115,7 +114,7 @@ export class TableOfContentsComponent {
     this.activeSheet = arg;
   }
 
-  showDayListInPlanTab(plan: Plan) {
+  showDayListInPlanTab(course: Course) {
     //(plan.exerciseDays as ExerciseDay[]).sort(function(a, b) { return a.sort(b)});
   }
 
@@ -247,7 +246,7 @@ export class TableOfContentsComponent {
 
   openTabPlan() {
     console.log("Pressed Plan")
-    this.showDayListInPlanTab(this.activePlan);
+    this.showDayListInPlanTab(this.activeCourse);
   }
 
   openTabCalender() {
@@ -288,8 +287,8 @@ export class TableOfContentsComponent {
       try {
         const data = JSON.parse(reader.result as string);
         console.log('Imported data:', data);
-        this.dataService.putAllPlans(data[0]);
-        this.plans = data[0];
+        this.dataService.putAllCourses(data[0]);
+        this.courses = data[0];
         this.dataService.putAllExerciseDays(data[1]);
         this.exerciseDays = data[1];
         this.dataService.putAllSheets(data[2]);
@@ -302,7 +301,7 @@ export class TableOfContentsComponent {
   }
    
   clickedExportJsonButton() {
-    const daysAndSheets: [ Array<Plan>, Array<ExerciseDay>, Array<Sheet> ] = [ this.dataService.getAllPlansNotObserved(), this.exerciseDays, this.dataService.getAllSheetsNotObserved() ];
+    const daysAndSheets: [ Array<Course>, Array<ExerciseDay>, Array<Sheet> ] = [ this.dataService.getAllCoursesNotObserved(), this.exerciseDays, this.dataService.getAllSheetsNotObserved() ];
     console.log("export");
     const jsonString = JSON.stringify(daysAndSheets);
     const blob = new Blob([jsonString], { type: 'application/json' });

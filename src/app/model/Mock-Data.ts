@@ -1,6 +1,6 @@
 import { Sheet } from "./Sheet";
 import { ExerciseDay } from "./ExerciseDay";
-import { Plan } from "./Plan";
+import { Course } from "./Course";
 
 var header: string;
 var pic: string;
@@ -84,10 +84,10 @@ const e2 = new ExerciseDay (
     [sHueftbeuger, sBrustmuskel]
 );
 
-const plan1 = new Plan ( 1, "Plan 1", [e1, e2] );
-const plan2 = new Plan ( 2, "Plan 2", [e1] );
+const course1 = new Course ( 1, "Course 1", [e1, e2] );
+const course2 = new Course ( 2, "Course 2", [e1] );
 
-export const PLANS: Plan[] = [plan1, plan2];
+export const COURSES: Course[] = [course1, course2];
 export const EXERCISEDAYS: ExerciseDay[] = [e1, e2];
 export const SHEETS: Sheet[] = [s1, s2, s3, sBrustmuskel, sHueftbeuger];
 

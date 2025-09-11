@@ -2,10 +2,10 @@
   <mat-card class="cardTop">
     <mat-card-title class="appTitle">Training Planner</mat-card-title>
     <mat-tab-group class="tabGroup" mat-align-tab="start" (selectedTabChange)="changeTab($event)" [(selectedIndex)]="tabSelection">
-      <mat-tab class="tabPlans">
-        <ng-template mat-tab-label>Plan</ng-template>
+      <mat-tab class="tabCourses">
+        <ng-template mat-tab-label>Course</ng-template>
         <div class="cardsRow">
-          <plans></plans>
+          <courses></courses>
         </div>
       </mat-tab>
       <mat-tab class="tabCalendar">

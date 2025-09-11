@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { Plan } from '../model/Plan'
+import { Course } from '../model/Course'
 import { ExerciseDay } from '../model/ExerciseDay';
 import { Sheet } from '../model/Sheet';
 
-import { PLANS, EXERCISEDAYS, SHEETS } from '../model/Mock-Data';
+import { COURSES, EXERCISEDAYS, SHEETS } from '../model/Mock-Data';
 
 import { BehaviorSubject, expand, Observable, of } from 'rxjs';
 import { MessageService } from '../message.service';
@@ -15,13 +15,13 @@ import { ActiveService } from './active-service';
 })
 export class DataService {
 
-  private allPlans: Plan[] = [];  
+  private allCourses: Course[] = [];  
   private allExerciseDays: ExerciseDay[] = [];
   private allSheets: Sheet[] = [];
   constructor(private messageService: MessageService, private activeService: ActiveService) { }
 
   fillDataFromMockData() {
-    this.putAllPlans(PLANS);
+    this.putAllCourses(COURSES);
     this.putAllExerciseDays(EXERCISEDAYS);
     this.putAllSheets(SHEETS);
   }
@@ -44,18 +44,18 @@ export class DataService {
     };
   }
 
-  putAllPlans(plans: Plan[]) {
-    this.allPlans = plans;
+  putAllCourses(courses: Course[]) {
+    this.allCourses = courses;
   }
 
-  getAllPlans(): Observable<Plan[]> {
-    var plans: Observable<Plan[]>;
-    plans = of(this.allPlans);
-    return plans;
+  getAllCourses(): Observable<Course[]> {
+    var courses: Observable<Course[]>;
+    courses = of(this.allCourses);
+    return courses;
   }
   
-  getAllPlansNotObserved(): Plan[] {
-      return this.allPlans;
+  getAllCoursesNotObserved(): Course[] {
+      return this.allCourses;
   }
 
   getAllExerciseDays(): Observable<ExerciseDay[]> {
@@ -130,9 +130,9 @@ export class DataService {
     return highest + 1;
   }
 
-  getNextPlanId(): number {
+  getNextCourseId(): number {
     var highest: number = 0;
-    this.allPlans.forEach(day => {
+    this.allCourses.forEach(day => {
       if ((day.id != null) && (day.id > highest)) { highest = day.id };
     });
     return highest + 1;
