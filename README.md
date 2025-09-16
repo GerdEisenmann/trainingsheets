@@ -73,3 +73,19 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Generating an OpenAPI Server
+Required: trainigsheets.yaml and for Logging: Winston (npm install winston)
+First get OpenAPI jar:
+curl -o openapi-generator-cli.jar https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0/openapi-generator-cli-7.6.0.jar
+
+Generate Java/Spring Server:
+java -jar openapi-generator-cli.jar generate -i trainigsheets.yaml -g spring -o ./generated-spring-server
+Run Java Server:
+mvn clean package
+Start: mvn spring-boot:run
+or Start (after building): java -jar target/*.jar 
+
+Generate Node/Express Server:
+java -jar openapi-generator-cli.jar generate -i trainigsheets.yaml -g nodejs-express-server -o ./generated-express-server
+Run Node Server: node index.js

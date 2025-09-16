@@ -1,0 +1,171 @@
+openapi: 3.0.3
+info:
+  title: Trainingsheets API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /sheets:
+    get:
+      summary: Get all sheets
+      responses:
+        '200':
+          description: List of sheets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sheet'
+    post:
+      summary: Create a new sheet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sheet'
+      responses:
+        '201':
+          description: Sheet created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sheet'
+  /sheets/{id}:
+    get:
+      summary: Get a sheet by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A single sheet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sheet'
+  /exerciseDays:
+    get:
+      summary: Get all Exercise Days
+      responses:
+        '200':
+          description: List of Exercise Days
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExerciseDay'
+    post:
+      summary: Create a new ExerciseDay
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExerciseDay'
+      responses:
+        '201':
+          description: ExerciseDay created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseDay'
+  /exerciseDays/{id}:
+    get:
+      summary: Get a ExerciseDay by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: One ExerciseDay
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExerciseDay'
+  /courses:
+    get:
+      summary: Get all courses
+      responses:
+        '200':
+          description: List of courses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Course'
+    post:
+      summary: Create a new Course
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Course'
+      responses:
+        '201':
+          description: Course created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+  /courses/{id}:
+    get:
+      summary: Get a Course by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: One Course
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+components:
+  schemas:
+    Sheet:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        date:
+          type: string
+          format: date
+    ExerciseDay:
+      type: object
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+          format: date
+        sheets:
+          type: array
+          $ref: '#/components/schemas/Sheet'
+    Course:
+      type: object
+      properties:
+        id:
+          type: string
+        shortName:
+          type: string
+        exerciseDays:
+          type: array
+          $ref: '#/components/schemas/ExerciseDay'
