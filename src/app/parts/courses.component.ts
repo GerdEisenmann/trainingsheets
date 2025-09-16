@@ -1,13 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, inject } from "@angular/core";
-import { ActiveService } from "./service/active-service";
-import { DataService } from "./service/data.service";
+import { ActiveService } from "../service/active-service";
+import { DataService } from "../service/data.service";
 import { FormsModule } from "@angular/forms";
-import { ExerciseDay } from "./model/ExerciseDay";
-import { Course } from "./model/Course";
+import { ExerciseDay } from "../model/ExerciseDay";
+import { Course } from "../model/Course";
 import { CommonModule, NgFor } from "@angular/common";
-import { EditNameModalComponent } from "./table-of-contents/editNameModal.component";
-import { DayQueryModalComponent } from "./table-of-contents/searchDayQueryModal.component";
+import { EditNameModalComponent } from "../dialogs/editNameModal.component";
+import { DayQueryModalComponent } from "../dialogs/searchDayQueryModal.component";
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MatListModule, MatListItem, MatListItemIcon } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon'

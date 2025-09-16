@@ -3,24 +3,24 @@ import { Component, inject } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { RouterModule, RouterLink, RouterLinkActive } from '@angular/router';
 
-import { ExerciseDay } from '../model/ExerciseDay';
-import { Sheet } from '../model/Sheet';
-import { Course } from '../model/Course';
-import { SHEETS } from '../model/Mock-Data';
-import { SheetDetailComponent } from '../sheetDetail.component';
-import { CourseComponent } from '../courses.component';
+import { ExerciseDay } from './model/ExerciseDay';
+import { Sheet } from './model/Sheet';
+import { Course } from './model/Course';
+import { SHEETS } from './model/Mock-Data';
+import { SheetDetailComponent } from './parts/sheetDetail.component';
+import { CourseComponent } from './parts/courses.component';
 import { NEVER, Observable } from 'rxjs';
 import { BehaviorSubject } from "rxjs";
 
-import { DataService } from '../service/data.service';
-import { ActiveService } from '../service/active-service';
-import { ToCService } from '../toc.service';
+import { DataService } from './service/data.service';
+import { ActiveService } from './service/active-service';
+import { ToCService } from './service/toc.service';
 
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { DayQueryModalComponent } from './dayQueryModal.component';
-import { DayDatePickerQueryModalComponent } from './dayDatePickerQueryModal.component';
+import { DayQueryModalComponent } from './dialogs/dayQueryModal.component';
+import { DayDatePickerQueryModalComponent } from './dialogs/dayDatePickerQueryModal.component';
 import { FormsModule } from '@angular/forms';
-import { SheetQueryModalComponent } from './searchSheetQueryModal.component';
+import { SheetQueryModalComponent } from './dialogs/searchSheetQueryModal.component';
 
 import { MatListModule, MatListItem, MatListItemIcon } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon'
@@ -33,12 +33,12 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-table-of-contents',
   imports: [ CommonModule, RouterModule, FormsModule, NgFor, CourseComponent, SheetDetailComponent, MatTabsModule, MatListModule, MatIconModule, MatButtonModule, MatCardModule, CourseComponent ],  
-  templateUrl: './table-of-contents.component.html',
-  styleUrl: './table-of-contents.component.css',
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.css',
   providers: [ { provide: MatDialogRef,useValue: {} } ]
 })
 
-export class TableOfContentsComponent {
+export class MainComponent {
 
   courses: Course[] = [];
   exerciseDays: ExerciseDay[] = [];
@@ -51,7 +51,7 @@ export class TableOfContentsComponent {
   tabSelection: number = 1;
      
   constructor(
-    private dialogRef: MatDialogRef<TableOfContentsComponent>,
+    private dialogRef: MatDialogRef<MainComponent>,
     private dataService: DataService,
     public activeService: ActiveService,
     private httpClient: HttpClient,

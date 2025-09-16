@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableOfContentsComponent } from './table-of-contents.component';
+import { MainComponent } from './main.component';
 
 describe('TableOfContentsComponent', () => {
-  let component: TableOfContentsComponent;
-  let fixture: ComponentFixture<TableOfContentsComponent>;
+  let component: MainComponent;
+  let fixture: ComponentFixture<MainComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableOfContentsComponent]
+      imports: [MainComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TableOfContentsComponent);
+    fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

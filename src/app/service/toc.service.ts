@@ -1,9 +1,9 @@
 import { contentChild, Injectable } from "@angular/core";
-import { Content } from "./model/content";
+import { Content } from "../model/content";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { lastValueFrom } from "rxjs";
-import { ToC } from "./model/toc";
-import { Sheet } from "./model/Sheet";
+import { ToC } from "../model/toc";
+import { Sheet } from "../model/Sheet";
 
 @Injectable({       
   providedIn: 'root',

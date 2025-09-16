@@ -7,7 +7,7 @@ import { Sheet } from '../model/Sheet';
 import { COURSES, EXERCISEDAYS, SHEETS } from '../model/Mock-Data';
 
 import { BehaviorSubject, expand, Observable, of } from 'rxjs';
-import { MessageService } from '../message.service';
+import { MessageService } from '../service/message.service';
 import { ActiveService } from './active-service';
 
 @Injectable({

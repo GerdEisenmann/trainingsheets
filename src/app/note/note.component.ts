@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NoteService } from '../note.service';
+import { NoteService } from '../service/note.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SheetNavigationComponent } from '../sheet-navigation/sheet-navigation.component';
 import { NoteComponent } from '../note/note.component';
-import { NoteService } from '../note.service';
+import { NoteService } from '../service/note.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
