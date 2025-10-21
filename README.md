@@ -41,13 +41,27 @@ ng build
 ```
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
+## GitHub Actions
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+- **CI Workflow**: Automatically runs on every push and pull request to test the application on Node.js 18.x and 20.x
+- **Deploy Workflow**: Automatically builds and deploys to GitHub Pages on every push to main/master branch
+
+The workflows are located in `.github/workflows/`.
+
 ## For Github pages:
+
+### Manual Deployment
 ```bash
 npm run ng build -- --output-path docs --base-href /trainingsheets/browser/
 ```
 push this into branch gh-pges and commit to github.
 Wait a while. Then open
 https://GerdEisenmann.github.io/trainingsheets/browser
+
+### Automatic Deployment
+The GitHub Actions deploy workflow automatically deploys to GitHub Pages on every push to the main branch.
 
 
 
